@@ -4,12 +4,19 @@
       <table class="table table-hover table-striped">
         <thead>
           <tr>
-            <th></th>
+            <th>Id:</th>
+            <th>Name:</th>
+            <th>Difficult Level:</th>
+            <th>Estimated Time</th>
+            <th>Action:</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
+          <tr v-for="(value, index) in exerciese" v-bind:key="index" v-on:click="readTableRow(value)">
+            <td>{{value.exerciseId}}</td>
+            <td>{{value.exerciseName}}</td>
+            <td>{{value.difficultLevel}}</td>
+            <td>{{value.estimatedTime}}</td>
             <td>
               <button
                 type="button"
@@ -43,12 +50,12 @@
           <div class="modal-header">
             <h3 class="modal-title" id="exerciseModalLable">
               <b>
-                Exercise.Name
+               {{selectedRow.exerciseName}}
               </b>
             </h3>
           </div>
           <div class="modal-body">
-            <p>Exercise.Name</p>
+            <p>{{selectedRow.exerciseName}}</p>
           </div>
           <div class="modal-footer">
             <button
@@ -84,9 +91,11 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get("");
-      console.log(response);
-      this.exerciese = response.data.elements;
+      const response = await axios.get("http://localhost:8080/exercises");
+      
+      console.log(response.data);
+
+      this.exerciese = response.data;
     } catch (error) {
       if (error) {
         console.log("Server Error: ", error);

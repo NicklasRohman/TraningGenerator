@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue"
+import Header from "./components/LayoutHeader.vue"
 import Layout from "./components/Layout.vue"
-import Footer from "./components/Footer.vue"
+import Footer from "./components/LayoutFooter.vue"
 
 export default {
   name: "App",
