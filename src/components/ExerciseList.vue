@@ -2,11 +2,11 @@
   <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by title"
-          v-model="title"/>
+        <input type="text" class="form-control" placeholder="Search by Exercise name"
+          v-model="exerciseName"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button"
-            @click="searchTitle"
+            @click="searchExerciseName"
           >
             Search
           </button>
@@ -22,7 +22,7 @@
           :key="index"
           @click="setActiveExercise(exercise, index)"
         >
-          {{ exercise.title }}
+          {{ exercise.exerciseName }}
         </li>
       </ul>
 
@@ -30,18 +30,27 @@
     <div class="col-md-6">
       <div v-if="currentExercise">
         <h4>Exercise</h4>
+                <div>
+          <label><strong>Id:</strong></label> {{ currentExercise.exerciseId }}
+        </div>
         <div>
-          <label><strong>Title:</strong></label> {{ currentExercise.title }}
+          <label><strong>Name:</strong></label> {{ currentExercise.exerciseName }}
+        </div>
+        <div>
+          <label><strong>Difficult Level:</strong></label> {{ currentExercise.difficultLevel }}
+        </div>
+                <div>
+          <label><strong>Estimated Time:</strong></label> {{ currentExercise.estimatedTime }}
+        </div>
+                <div>
+          <label><strong>Video Path:</strong></label> {{ currentExercise.videoPath }}
         </div>
         <div>
           <label><strong>Description:</strong></label> {{ currentExercise.description }}
         </div>
-        <div>
-          <label><strong>Status:</strong></label> {{ currentExercise.published ? "Published" : "Pending" }}
-        </div>
 
         <a class="badge badge-warning"
-          :href="'/exercises/' + currentExercise.id"
+          :href="'/exercises/' + currentExercise.exerciseId"
         >
           Edit
         </a>
@@ -64,7 +73,7 @@ export default {
       exercises: [],
       currentExercise: null,
       currentIndex: -1,
-      title: ""
+      exerciseName: ""
     };
   },
   methods: {
@@ -90,8 +99,8 @@ export default {
       this.currentIndex = index;
     },
     
-    searchTitle() {
-      ExerciseDataService.findByTitle(this.title)
+    searchExerciseName() {
+      ExerciseDataService.findByExerciseName(this.exerciseName)
         .then(response => {
           this.exercises = response.data;
           console.log(response.data);

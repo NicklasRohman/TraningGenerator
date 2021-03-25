@@ -3,9 +3,9 @@
     <h4>Exercise</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title"
-          v-model="currentExercise.title"
+        <label for="exerciseName">Exercise Name</label>
+        <input type="text" class="form-control" id="exerciseName"
+          v-model="currentExercise.exerciseName"
         />
       </div>
       <div class="form-group">
@@ -16,8 +16,8 @@
       </div>
 
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentExercise.published ? "Published" : "Pending" }}
+        <label><strong>Difficult Level:</strong></label>
+        {{ currentExercise.difficultLevel }}
       </div>
     </form>
 
@@ -76,17 +76,17 @@ export default {
         });
     },
 
-    updatePublished(status) {
+    updatePublished(difficultLevel) {
       var data = {
         id: this.currentExercise.id,
-        title: this.currentExercise.title,
+        exerciseName: this.currentExercise.exerciseName,
         description: this.currentExercise.description,
-        published: status
+        difficultLevel: this.currentExercise.difficultLevel
       };
 
       ExerciseDataService.update(this.currentExercise.id, data)
         .then(response => {
-          this.currentExercise.published = status;
+          this.currentExercise.difficultLevel = difficultLevel;
           console.log(response.data);
         })
         .catch(e => {

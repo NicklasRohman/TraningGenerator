@@ -2,23 +2,23 @@ import http from "../http-common";
 
 class ExerciseDataService {
     getAll() {
-        return http.get("/all");
+        return http.get("/exercise/all");
     }
 
     get(id){
-        return http.get(`/${id}`);
+        return http.get(`/exercise/${id}`);
     }
 
     create(data) {
-        return http.post("/create", data);
+        return http.post("/exercise/create", data);
     }
 
     update(id,data) {
-        return http.put(`/update/${id}`, data);
+        return http.put(`/exercise/update/${id}`, data);
     }
 
     delete(id){
-        return http.delete(`/${id}`);
+        return http.delete(`/exercise/${id}`);
     }
 }
 

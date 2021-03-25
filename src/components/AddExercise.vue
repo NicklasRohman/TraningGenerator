@@ -3,14 +3,14 @@
     <div class="submit-form">
       <div v-if="!submitted">
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="exerciseName">Exercise Name</label>
           <input
             type="text"
             class="form-control"
-            id="title"
+            id="exerciseName"
             required
-            v-model="exercise.title"
-            name="title"
+            v-model="exercise.exerciseName"
+            name="exerciseName"
           />
         </div>
 
@@ -45,17 +45,18 @@ data() {
     return {
         exercise: {
             id: null,
-            title: "",
+            exerciseName: "",
             description: "",
-            published: false
+            difficultLevel: 1
         },
         submitted: false
     };
 }, methods: {
     saveExercise() {
         var data = {
-            title: this.exercise.title,
-            description: this.exercise.description
+            exerciseName: this.exercise.exerciseName,
+            description: this.exercise.description,
+            difficultLevel: this.exercise.difficultLevel
         };
 
         ExerciseDataService.create(data).then(response => {
