@@ -47,7 +47,9 @@ data() {
             id: null,
             exerciseName: "",
             description: "",
-            difficultLevel: 1
+            difficultLevel: 1,
+            videoPath:"",
+            estimatedTime: 1
         },
         submitted: false
     };
@@ -60,7 +62,7 @@ data() {
         };
 
         ExerciseDataService.create(data).then(response => {
-            this.exercise.id = response.data.id;
+            this.exercise.exerciseName = response.data.exerciseName;
             console.log(response.data);
             this.submitted = true;
         })
