@@ -58,12 +58,12 @@
         />
       </div>
 
-      <button @click="saveExercise" class="btn btn success">Submit</button>
+      <button class="btn btn success" @click="saveExercise">Submit</button>
     </div>
 
     <div v-else>
       <h4>You Submitted Successfully</h4>
-      <button class="btn btn-success" @click="newExercise">Add</button>
+      <button class="btn btn-success" @click="newExercise">Ok</button>
     </div>
   </div>
   </div>
@@ -77,7 +77,6 @@ name: "add-exercise",
 data() {
     return {
         exercise: {
-            id: null,
             exerciseName: "",
             description: "",
             difficultLevel: 1,
@@ -90,8 +89,12 @@ data() {
     saveExercise() {
         var data = {
             exerciseName: this.exercise.exerciseName,
+            difficultLevel: this.exercise.difficultLevel,
             description: this.exercise.description,
-            difficultLevel: this.exercise.difficultLevel
+            videoPath: this.exercise.videoPath,
+            estimatedTime: this.exercise.estimatedTime
+
+            
         };
 
         ExerciseDataService.create(data).then(response => {

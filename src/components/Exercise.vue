@@ -93,7 +93,7 @@ export default {
     },
 
     updateExercise() {
-      ExerciseDataService.update(this.currentExercise.id, this.currentExercise)
+      ExerciseDataService.update(this.currentExercise.exerciseId, this.currentExercise)
         .then(response => {
           console.log(response.data);
           this.message = 'The exercise was updated successfully!';
@@ -104,7 +104,7 @@ export default {
     },
 
     deleteExercise() {
-      ExerciseDataService.delete(this.currentExercise.id)
+      ExerciseDataService.delete(this.currentExercise.exerciseId)
         .then(response => {
           console.log(response.data);
           this.$router.push({ name: "exercises" });
