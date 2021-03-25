@@ -14,6 +14,39 @@
           />
         </div>
 
+        <div class="form-group">
+        <label for="difficultLevel">Difficult Level</label>
+        <input
+          class="form-control"
+          id="difficultLevel"
+          required
+          v-model="exercise.difficultLevel"
+          name="difficultLevel"
+        />
+      </div>
+
+        <div class="form-group">
+        <label for="estimatedTime">Estimated Time</label>
+        <input
+          class="form-control"
+          id="estimatedTime"
+          required
+          v-model="exercise.estimatedTime"
+          name="estimatedTime"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="videoPath">Video Path</label>
+        <input
+          class="form-control"
+          id="videoPath"
+          required
+          v-model="exercise.videoPath"
+          name="videoPath"
+        />
+      </div>
+
       <div class="form-group">
         <label for="description">Description</label>
         <input
