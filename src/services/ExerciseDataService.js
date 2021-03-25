@@ -18,7 +18,7 @@ class ExerciseDataService {
     }
 
     delete(id){
-        return http.delete(`/exercise/${id}`);
+        return http.delete(`/exercise/delete/${id}`);
     }
 }
 
