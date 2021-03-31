@@ -1,18 +1,9 @@
 <template>
+<div class="container-fluid">
+<div class="list row">
+  <SearchExercise/>
+</div>
   <div class="list row">
-    <div class="col-md-8">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search by Exercise name"
-          v-model="exerciseName"/>
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button"
-            @click="searchExerciseName"
-          >
-            Search
-          </button>
-        </div>
-      </div>
-    </div>
     <div class="col-md-6">
       <h4>Exercises List</h4>
       <ul class="list-group">
@@ -61,13 +52,18 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
 import ExerciseDataService from "../services/ExerciseDataService";
+import SearchExercise from "./SearchExercise"
 
 export default {
   name: "Exercises-list",
+  components: {
+  SearchExercise
+  },
   data() {
     return {
       exercises: [],

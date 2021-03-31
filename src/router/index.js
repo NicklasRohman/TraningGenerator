@@ -21,6 +21,11 @@ export default new Router({
       path: "/add",
       name: "add",
       component: () => import("../components/AddExercise")
+    },
+    {
+      path: "/randomExercise",
+      name: "randomExercise",
+      component: () => import("../components/RandomExercise")
     }
   ]
 });

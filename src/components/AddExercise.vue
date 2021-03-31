@@ -58,12 +58,12 @@
         />
       </div>
 
-      <button class="btn btn success" @click="saveExercise">Submit</button>
+      <button type="button" class="btn btn-info" @click="saveExercise">Submit</button>
     </div>
 
     <div v-else>
       <h4>You Submitted Successfully</h4>
-      <button class="btn btn-success" @click="newExercise">Ok</button>
+      <button type="button" class="btn btn-success" @click="newExercise">Ok</button>
     </div>
   </div>
   </div>
