@@ -52,7 +52,7 @@
           <div class="col">
             <div class="form-group">
               <label for="minEstimatedTime"
-                >Minimum Estimated Time in minutes</label
+                >Min Estimated Time in minutes</label
               >
               <input
                 type="number"
@@ -170,11 +170,12 @@ export default {
 
 <style>
 .submit-form {
-  max-width: 300px;
+  max-width: 80%;
   margin: auto;
 }
 
 input {
   width: 50%;
 }
+
 </style>
