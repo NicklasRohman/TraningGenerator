@@ -32,7 +32,7 @@
       </div>
 
         <div class="form-group">
-        <label for="estimatedTime">Estimated Time</label>
+        <label for="estimatedTime">Estimated Time in minutes</label>
         <input
           type="number"
           class="form-control"
