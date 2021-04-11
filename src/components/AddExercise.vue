@@ -11,28 +11,37 @@
             required
             v-model="exercise.exerciseName"
             name="exerciseName"
+            placeholder="Enter Exercise name"
+            minlength="3"
           />
         </div>
 
         <div class="form-group">
         <label for="difficultLevel">Difficult Level</label>
         <input
+          type="number"
           class="form-control"
           id="difficultLevel"
           required
           v-model="exercise.difficultLevel"
           name="difficultLevel"
+          min="1"
+          max="10"
+          placeholder="Between 1-10"
         />
       </div>
 
         <div class="form-group">
         <label for="estimatedTime">Estimated Time</label>
         <input
+          type="number"
           class="form-control"
           id="estimatedTime"
           required
           v-model="exercise.estimatedTime"
           name="estimatedTime"
+          min="1"
+          placeholder="Between 1 and more"
         />
       </div>
 
@@ -44,17 +53,20 @@
           required
           v-model="exercise.videoPath"
           name="videoPath"
+          placeholder="Youtube link or something similar"
         />
       </div>
 
       <div class="form-group">
         <label for="description">Description</label>
-        <input
+        <textarea
           class="form-control"
           id="description"
           required
           v-model="exercise.description"
           name="description"
+          maxlength="500"
+          placeholder="Max 500 characters"
         />
       </div>
 
@@ -77,11 +89,11 @@ name: "add-exercise",
 data() {
     return {
         exercise: {
-            exerciseName: "",
+            exerciseName: null,
             description: "",
-            difficultLevel: 1,
+            difficultLevel: null,
             videoPath:"",
-            estimatedTime: 1
+            estimatedTime: null
         },
         submitted: false
     };
@@ -93,8 +105,6 @@ data() {
             description: this.exercise.description,
             videoPath: this.exercise.videoPath,
             estimatedTime: this.exercise.estimatedTime
-
-            
         };
 
         ExerciseDataService.create(data).then(response => {
@@ -120,4 +130,5 @@ data() {
   max-width: 300px;
   margin: auto;
 }
+
 </style>
