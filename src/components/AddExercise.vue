@@ -91,9 +91,9 @@ data() {
         exercise: {
             exerciseName: null,
             description: "",
-            difficultLevel: null,
+            difficultLevel: 1,
             videoPath:"",
-            estimatedTime: null
+            estimatedTime: 1
         },
         submitted: false
     };
