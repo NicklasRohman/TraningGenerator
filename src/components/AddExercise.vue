@@ -120,7 +120,7 @@ data() {
     newExercise() {
         this.submitted = false;
         this.exercise = {};
-    }
+    },
 }
 })
 </script>
