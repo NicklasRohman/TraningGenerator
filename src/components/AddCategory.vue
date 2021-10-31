@@ -67,7 +67,7 @@ data() {
             estimatedTime: this.category.estimatedTime
         };
 
-        categoryDataService.create(data).then(response => {
+        CategoryDataService.create(data).then(response => {
             this.category.categoryName = response.data.categoryName;
             console.log(response.data);
             this.submitted = true;

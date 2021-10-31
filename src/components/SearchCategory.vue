@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import categoryDataService from "../services/categoryDataService";
+import CategoryDataService from "../services/CategoryDataService";
 
 export default {
   name: "search-category",
@@ -30,7 +30,7 @@ export default {
   methods: {
 
     searchCategoryName() {
-      categoryDataService.findByCategoryName(this.categoryName)
+      CategoryDataService.findByCategoryName(this.categoryName)
         .then(response => {
           this.category = response.data;
           console.log(response.data);

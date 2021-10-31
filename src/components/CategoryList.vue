@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-6">
       <div v-if="currentCategory">
-        <h4>category</h4>
+        <h4>Category</h4>
                 <div>
           <label><strong>Id:</strong></label> {{ currentCategory.categoryId }}
         </div>
@@ -47,11 +47,11 @@
 </template>
 
 <script>
-import categoryDataService from "../services/categoryDataService";
+import CategoryDataService from "../services/CategoryDataService";
 import SearchCategory from "./SearchCategory"
 
 export default {
-  name: "category-list",
+  name: "Category-list",
   components: {
   SearchCategory
   },
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     retrieveCategory() {
-      categoryDataService.getAll()
+      CategoryDataService.getAll()
         .then(response => {
           this.category = response.data;
           console.log(response.data);
@@ -87,7 +87,7 @@ export default {
     },
     
     searchCategoryName() {
-      categoryDataService.findByCategoryName(this.categoryName)
+      CategoryDataService.findByCategoryName(this.categoryName)
         .then(response => {
           this.category = response.data;
           console.log(response.data);

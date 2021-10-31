@@ -27,12 +27,12 @@ export default new Router({
       name: "randomExercise",
       component: () => import("../components/RandomExercise")
     },
-        {
-          path: "/",
-          alias: "/category",
-          name: "category",
-          component: () => import("../components/CategoryList")
-        },
+    {
+        path: "/",
+        alias: "/category",
+        name: "category",
+        component: () => import("../components/CategoryList")
+    },
     {
         path: "/addCategory",
         name: "addCategory",
