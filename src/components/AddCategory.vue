@@ -4,15 +4,15 @@
       <div v-if="!submitted">
 
         <div class="form-group">
-          <label for="exerciseName">Tag Name</label>
+          <label for="categoryName">Category Name</label>
           <input
             type="text"
             class="form-control"
-            id="exerciseName"
+            id="categoryName"
             required
-            v-model="exercise.exerciseName"
-            name="exerciseName"
-            placeholder="Enter Exercise name"
+            v-model="category.categoryName"
+            name="categoryName"
+            placeholder="Enter category name"
             minlength="3"
           />
         </div>
@@ -23,33 +23,33 @@
           class="form-control"
           id="description"
           required
-          v-model="exercise.description"
+          v-model="category.description"
           name="description"
           maxlength="500"
           placeholder="Max 500 characters"
         />
       </div>
 
-      <button type="button" class="btn btn-info" @click="saveExercise">Submit</button>
+      <button type="button" class="btn btn-info" @click="saveCategory">Submit</button>
     </div>
 
     <div v-else>
       <h4>You Submitted Successfully</h4>
-      <button type="button" class="btn btn-success" @click="newExercise">Ok</button>
+      <button type="button" class="btn btn-success" @click="newCategory">Ok</button>
     </div>
   </div>
   </div>
 </template>
 
 <script>
-import ExerciseDataService from "../services/ExerciseDataService"
+import CategoryDataService from "../services/CategoryDataService"
 
 export default ({
-name: "add-exercise",
+name: "add-category",
 data() {
     return {
-        exercise: {
-            exerciseName: null,
+        category: {
+            categoryName: null,
             description: "",
             difficultLevel: 1,
             videoPath:"",
@@ -58,17 +58,17 @@ data() {
         submitted: false
     };
 }, methods: {
-    saveExercise() {
+    saveCategory() {
         var data = {
-            exerciseName: this.exercise.exerciseName,
-            difficultLevel: this.exercise.difficultLevel,
-            description: this.exercise.description,
-            videoPath: this.exercise.videoPath,
-            estimatedTime: this.exercise.estimatedTime
+            categoryName: this.category.categoryName,
+            difficultLevel: this.category.difficultLevel,
+            description: this.category.description,
+            videoPath: this.category.videoPath,
+            estimatedTime: this.category.estimatedTime
         };
 
-        ExerciseDataService.create(data).then(response => {
-            this.exercise.exerciseName = response.data.exerciseName;
+        categoryDataService.create(data).then(response => {
+            this.category.categoryName = response.data.categoryName;
             console.log(response.data);
             this.submitted = true;
         })
@@ -77,9 +77,9 @@ data() {
         });
     },
 
-    newExercise() {
+    newCategory() {
         this.submitted = false;
-        this.exercise = {};
+        this.category = {};
     },
 }
 })

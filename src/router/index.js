@@ -26,6 +26,18 @@ export default new Router({
       path: "/randomExercise",
       name: "randomExercise",
       component: () => import("../components/RandomExercise")
+    },
+        {
+          path: "/",
+          alias: "/category",
+          name: "category",
+          component: () => import("../components/CategoryList")
+        },
+    {
+        path: "/addCategory",
+        name: "addCategory",
+        component: () => import("../components/AddCategory")
     }
+
   ]
 });

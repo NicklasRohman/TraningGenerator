@@ -1,14 +1,14 @@
 <template>
-  <div v-if="currentTag" class="edit-form">
-    <h4>Tag</h4>
+  <div v-if="currentCategory" class="edit-form">
+    <h4>Category</h4>
     <form>
       <div class="form-group">
-        <label for="tagName">Tag Name</label>
+        <label for="categoryName">Category Name</label>
         <input
           type="text"
           class="form-control"
-          id="TagName"
-          v-model="currentTag.tagName"
+          id="CategoryName"
+          v-model="currentCategory.categoryName"
         />
       </div>
 
@@ -18,17 +18,17 @@
           type="text"
           class="form-control"
           id="description"
-          v-model="currentTag.description"
+          v-model="currentCategory.description"
         />
       </div>
       
     </form>
 
-    <button class="badge badge-danger mr-2" @click="deleteTag">
+    <button class="badge badge-danger mr-2" @click="deleteCategory">
       Delete
     </button>
 
-    <button type="submit" class="badge badge-success" @click="updateTag">
+    <button type="submit" class="badge badge-success" @click="updateCategory">
       Update
     </button>
     <p>{{ message }}</p>
@@ -36,26 +36,26 @@
 
   <div v-else>
     <br />
-    <p>Please click on a Tag...</p>
+    <p>Please click on a Category...</p>
   </div>
 </template>
 
 <script>
-import TagDataService from "../services/TagDataService";
+import CategoryDataService from "../services/CategoryDataService";
 
 export default {
-  name: "tag",
+  name: "category",
   data() {
     return {
-      currentTag: null,
+      currentCategory: null,
       message: ''
     };
   },
   methods: {
-    getTag(id) {
-      TagDataService.get(id)
+    getCategory(id) {
+      CategoryDataService.get(id)
         .then(response => {
-          this.currentTag = response.data;
+          this.currentCategory = response.data;
           console.log(response.data);
         })
                 .catch(e => {
@@ -63,22 +63,22 @@ export default {
         });
     },
 
-    updateTag() {
-      TagDataService.update(this.currentTag.tagId, this.currentTag)
+    updateCategory() {
+      CategoryDataService.update(this.currentCategory.categoryId, this.currentCategory)
         .then(response => {
           console.log(response.data);
-          this.message = 'The tag was updated successfully!';
+          this.message = 'The category was updated successfully!';
         })
         .catch(e => {
           console.log(e);
         });
     },
 
-    deleteTag() {
-      TagDataService.delete(this.currentTag.tagId)
+    deleteCategory() {
+      CategoryDataService.delete(this.currentCategory.categoryId)
         .then(response => {
           console.log(response.data);
-          this.$router.push({ name: "tag" });
+          this.$router.push({ name: "category" });
         })
         .catch(e => {
           console.log(e);
@@ -87,7 +87,7 @@ export default {
   },
   mounted() {
     this.message = '';
-    this.getTag(this.$route.params.id);
+    this.getCategory(this.$route.params.id);
   }
 };
 </script>
